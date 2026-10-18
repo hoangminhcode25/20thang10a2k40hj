@@ -173,6 +173,48 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
 
 
 
+/* BÀN PHÍM SỐ ẢO MÀU HỒNG */
+.virtual-keyboard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  margin: 16px auto 4px;
+}
+
+.virtual-keyboard button {
+  min-height: 54px;
+  border: 1px solid #ffd0e1;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #ffffff, #fff0f6);
+  color: #c74680;
+  font-size: 1.25rem;
+  font-weight: 800;
+  box-shadow: 0 4px 12px #d85c8b12;
+  transition: transform .15s, background .15s;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.virtual-keyboard button:hover {
+  background: #ffe0ed;
+}
+
+.virtual-keyboard button:active {
+  transform: scale(.94);
+  background: #ffd3e4;
+}
+
+.virtual-keyboard button.key-action {
+  background: linear-gradient(135deg, #ffe0ed, #f4e8ff);
+  color: #a33b75;
+}
+
+#passcode {
+  caret-color: transparent;
+  cursor: default;
+}
+
 </style>
 </head>
 <body>
@@ -191,13 +233,58 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
     <div class="eyebrow">A2K40 • 20 tháng 10</div>
     <h1>Điều bí mật<br>gửi cậu</h1>
     <p class="subtitle">Một món quà nhỏ dành riêng cho những cô gái tuyệt vời của A2K40.<br>Nhập mật mã của cậu để mở thiệp nhé! 🌷</p>
-    <form id="unlockForm">
-      <label class="pass-label" for="passcode">Mật mã ngày sinh (DDMM)</label>
-      <input id="passcode" name="passcode" type="password" inputmode="numeric" autocomplete="off"
-        maxlength="4" pattern="[0-9]{4}" placeholder="••••" aria-describedby="errorMessage" required>
-      <button class="btn btn-primary" id="unlockBtn" type="submit">💌 Mở thiệp của tớ</button>
-      <p id="errorMessage" class="error" role="status" aria-live="polite"></p>
-    </form>
+    
+<form id="unlockForm">
+  <label class="pass-label" for="passcode">
+    Mật mã ngày sinh (DDMM)
+  </label>
+
+  <!-- Ô hiển thị mật mã -->
+  <input
+    id="passcode"
+    name="passcode"
+    type="password"
+    inputmode="none"
+    autocomplete="off"
+    maxlength="4"
+    pattern="[0-9]{4}"
+    placeholder="••••"
+    aria-describedby="errorMessage"
+    readonly
+    required
+  >
+
+  <!-- BÀN PHÍM SỐ ẢO -->
+  <div class="virtual-keyboard" id="virtualKeyboard">
+
+    <button type="button" data-key="1">1</button>
+    <button type="button" data-key="2">2</button>
+    <button type="button" data-key="3">3</button>
+
+    <button type="button" data-key="4">4</button>
+    <button type="button" data-key="5">5</button>
+    <button type="button" data-key="6">6</button>
+
+    <button type="button" data-key="7">7</button>
+    <button type="button" data-key="8">8</button>
+    <button type="button" data-key="9">9</button>
+
+    <button type="button" data-action="clear">C</button>
+    <button type="button" data-key="0">0</button>
+    <button type="button" data-action="backspace">⌫</button>
+
+  </div>
+
+  <!-- NÚT MỞ THIỆP -->
+  <button class="btn btn-primary" id="unlockBtn" type="submit">
+    💌 Mở thiệp của tớ
+  </button>
+
+  <!-- THÔNG BÁO LỖI -->
+  <p id="errorMessage" class="error"
+     role="status" aria-live="polite"></p>
+</form>
+
     <p class="tiny">Dành tặng bằng tất cả yêu thương<br>✨ Women Day A2K40 ✨</p>
   </div>
 </main>
@@ -424,6 +511,45 @@ const recipientName = document.getElementById("recipientName");
 const wishText = document.getElementById("wishText");
 const bgMusic = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
+
+/* ===== CHỨC NĂNG BÀN PHÍM SỐ ẢO ===== */
+
+const virtualKeyboard = document.getElementById("virtualKeyboard");
+
+// Chặn bàn phím thiết bị và chỉ cho nhập qua nút số
+passcodeInput.readOnly = true;
+passcodeInput.setAttribute("inputmode", "none");
+
+// Xử lý khi người dùng bấm vào bàn phím ảo
+virtualKeyboard.addEventListener("click", function(event) {
+  const button = event.target.closest("button");
+
+  if (!button) return;
+
+  // Nút C: xóa toàn bộ mật mã
+  if (button.dataset.action === "clear") {
+    passcodeInput.value = "";
+    errorMessage.textContent = "";
+    return;
+  }
+
+  // Nút ⌫: xóa một số cuối cùng
+  if (button.dataset.action === "backspace") {
+    passcodeInput.value = passcodeInput.value.slice(0, -1);
+    errorMessage.textContent = "";
+    return;
+  }
+
+  // Nút số: thêm số vào ô mật mã
+  const digit = button.dataset.key;
+
+  if (/^[0-9]$/.test(digit) &&
+      passcodeInput.value.length < 4) {
+    passcodeInput.value += digit;
+    errorMessage.textContent = "";
+  }
+});
+
 
 
 let isTransitioning = false;
