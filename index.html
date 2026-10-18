@@ -319,7 +319,8 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
 <!-- Đặt file nhạc tên music.mp3 cùng thư mục với file HTML.
      Trình duyệt cần thao tác của người dùng trước khi cho phát nhạc. -->
 <audio id="bgMusic" src="music.mp3" loop preload="none"></audio>
-
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 /*
   CÁCH THAY DANH SÁCH:
@@ -328,6 +329,19 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
   3. Thay 34 mục mẫu bằng tên và ngày/tháng sinh thật (4 chữ số, ví dụ 0703).
   4. Mỗi mật mã nên khác nhau. Nếu trùng ngày sinh DDMM, cần chọn cách phân biệt khác.
 */
+
+/* ===== CẤU HÌNH FIREBASE A2K40 ===== */
+const firebaseConfig = {
+  apiKey: "AIzaSyDk3BnKKeT7MVNWwr6cJP3y5_vgNpCr9U8",
+    authDomain: "a2k40-20-10.firebaseapp.com",
+    projectId: "a2k40-20-10",
+    storageBucket: "a2k40-20-10.firebasestorage.app",
+    messagingSenderId: "1093822888836",
+    appId: "1:1093822888836:web:7e796ca2404fe1f2de3bd1"
+};
+
+firebase.initializeApp(firebaseConfig);
+const trackingDB = firebase.firestore();
 
 const RECIPIENTS = [
   {
@@ -554,6 +568,20 @@ virtualKeyboard.addEventListener("click", function(event) {
 
 let isTransitioning = false;
 
+/* ===== GHI NHẬN NGƯỜI MỞ THƯ ===== */
+async function recordLetterOpen(person) {
+  try {
+    await trackingDB.collection("letterOpens").add({
+      name: person.name,
+      openedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    console.log("Đã ghi nhận lượt mở thư:", person.name);
+  } catch (error) {
+    console.error("Không thể ghi nhận lượt mở thư:", error);
+  }
+}
+
 function openCard(person) {
   if (isTransitioning) return;
   isTransitioning = true;
@@ -629,7 +657,8 @@ document.getElementById("unlockForm").addEventListener("submit", function(event)
   const code = passcodeInput.value.replace(/\D/g, "").trim();
   const matches = RECIPIENTS.filter(person => person.code === code);
   if (matches.length === 1) {
-    openCard(matches[0]);
+    recordLetterOpen(matches[0]);
+openCard(matches[0]);
   } else if (matches.length > 1) {
     errorMessage.textContent = "Mật mã này đang bị trùng. Hãy sửa ngày sinh trong danh sách để mỗi bạn có một mã riêng nhé.";
   } else {
