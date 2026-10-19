@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ffe6f0">
-<title>20/10 — Thanh xuân A2K40 💗</title>
+<title>20/10 — A2K40 💗</title>
 <style>
 :root{
   --pink:#ff75a8;--pink-dark:#df4d88;--pink-light:#fff0f6;
@@ -215,6 +215,45 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
   cursor: default;
 }
 
+/* ===== HIỆU ỨNG LỜI CHÚC HIỆN DẦN ===== */
+.wish-box {
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
+/* Mỗi dòng lời chúc */
+.wish-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(4px);
+  animation: wishLineReveal 0.75s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes wishLineReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wish-line {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -347,47 +386,47 @@ const RECIPIENTS = [
   {
     name: "Kiều An",
     code: "1501",
-    wish: "Kiều An ơi, chúc cậu có một ngày 20/10 thật dịu dàng, nhận được thật nhiều hoa, quà và những lời yêu thương nhé! Mong cậu luôn bình an, gặp nhiều may mắn và tự tin bước về phía những ước mơ của mình. Sau này dù mỗi người đi một con đường, mong rằng khi nhớ về A2K40, cậu sẽ luôn mỉm cười vì chúng ta đã có một thanh xuân thật đẹp. 💗"
+    wish: "Chúc Kiều An ngày 20/10 luôn xinh đẹp, rạng rỡ và vui vẻ nhé! 🌷💗 Mong cậu luôn gặp nhiều may mắn, học tập thật tốt và lúc nào cũng nở nụ cười trên môi. Chúc cậu có một ngày 20/10 thật hạnh phúc và ngập tràn yêu thương! 💐💕"
   },
   {
     name: "Ngọc Anh",
     code: "1704",
-    wish: "Chúc Ngọc Anh luôn rạng rỡ như ánh nắng đầu ngày, lúc nào cũng vui vẻ và gặp thật nhiều điều đáng yêu. Mong cậu học hành thuận lợi, những cố gắng đều được đền đáp và những ngày mệt mỏi luôn có người ở bên động viên. Chúc cô gái của A2K40 luôn xinh đẹp, tự tin và hạnh phúc theo cách riêng của mình nhé! 🌷"
+    wish: "Chúc Ngọc Anh ngày 20/10 luôn xinh xắn, vui vẻ và rạng rỡ như những bông hoa nhé! 🌷💗 Mong cậu luôn gặp nhiều may mắn, học tập thật tốt và có thật nhiều niềm vui trong cuộc sống. Chúc cậu mãi tự tin, hạnh phúc và luôn được yêu thương! 💐💕"
   },
   {
     name: "Quỳnh Anh",
     code: "0101",
-    wish: "Quỳnh Anh à, chúc cậu 20/10 thật nhiều niềm vui, cười nhiều hơn lo nghĩ và ngày nào cũng có chuyện hay để kể. Mong cậu luôn giữ được nét đáng yêu của mình, gặp được những người chân thành và mạnh dạn theo đuổi điều cậu thực sự yêu thích. Chúc cậu có một tuổi trẻ đầy ắp tiếng cười, những chuyến đi đáng nhớ và kỷ niệm đẹp cùng A2K40. 🩷"
+    wish: "Chúc Quỳnh Anh ngày 20/10 luôn xinh đẹp, vui vẻ, rạng rỡ và gặp thật nhiều may mắn nhé! 💗🌷 Mong cậu luôn hạnh phúc, tự tin và được yêu thương thật nhiều. Chúc cậu có một ngày 20/10 thật đáng nhớ! 💐💕"
   },
   {
     name: "Điệp Anh",
     code: "2711",
-    wish: "Điệp Anh ơi, mong ngày 20/10 của cậu ngọt ngào như một hộp quà nhỏ và rực rỡ như cả vườn hoa! Chúc cậu luôn khỏe mạnh, học tập tiến bộ, làm gì cũng gặp thuận lợi và không bao giờ đánh mất sự tự tin của mình. Hy vọng mỗi ngày đến lớp đều đem lại cho cậu một niềm vui mới, để những năm tháng A2K40 trở thành ký ức mà sau này nhớ lại vẫn thấy thương. 🌸"
+    wish: "Chúc Điệp Anh có một ngày 20/10 thật đáng nhớ nhé! 💐 Mong cậu luôn giữ được nét đáng yêu của mình, gặp nhiều điều may mắn và có thật nhiều khoảnh khắc vui vẻ bên những người thân yêu. Chúc mọi điều tốt đẹp nhất sẽ đến với cậu, hôm nay và cả những ngày sau nữa! 💗✨"
   },
   {
     name: "Vân Anh",
     code: "1806",
-    wish: "Chúc Vân Anh luôn có một trái tim bình yên và một nụ cười thật tươi. Mong cậu gặp nhiều người tốt, có đủ dũng khí vượt qua những lúc khó khăn và luôn nhớ rằng bản thân mình có rất nhiều điều đáng quý. Ngày 20/10 chúc cậu nhận được thật nhiều yêu thương, còn 364 ngày còn lại cũng luôn được trân trọng và hạnh phúc nha! 💐"
+    wish: "Chúc Vân Anh ngày 20/10 luôn giữ được nguồn năng lượng tích cực và nụ cười thật tươi của mình nhé! Mong rằng tuổi trẻ của cậu sẽ có thật nhiều chuyến đi đáng nhớ, những người bạn chân thành và những ước mơ lần lượt trở thành hiện thực. Cứ tự tin tỏa sáng theo cách riêng của mình nha! ✨💐"
   },
   {
     name: "Quỳnh Anh",
     code: "1112",
-    wish: "Gửi Quỳnh Anh thứ hai của chúng ta một lời chúc thật đặc biệt! Chúc cậu luôn vui như được nghỉ tiết, may mắn như trúng tủ mỗi lần kiểm tra và hạnh phúc như ngày nhận được món quà mình thích. Đùa một chút thôi, mong cậu luôn khỏe mạnh, tự tin, gặp nhiều điều tốt lành và có thật nhiều kỷ niệm đáng nhớ bên hội bạn A2K40. Chúc cậu 20/10 lung linh hết nấc! 💕"
+    wish: "20/10 chúc Quỳnh Anh nhận được thật nhiều yêu thương và những điều bất ngờ ngọt ngào nhé! 💝 Mong cậu luôn đủ mạnh mẽ để theo đuổi điều mình thích, đủ bình yên để tận hưởng những điều giản dị và đủ hạnh phúc để mỗi ngày đều có lý do mỉm cười. Chúc cô gái của A2K40 luôn có một nụ cười rạng rỡ và thật hạnh phúc bên người yêu! 🌷💕"
   },
   {
     name: "Ngọc Ánh",
     code: "1006",
-    wish: "Ngọc Ánh à, chúc cậu luôn tỏa sáng theo cách rất riêng của mình, không cần giống bất kỳ ai vẫn đủ nổi bật và đáng yêu. Mong những điều cậu âm thầm cố gắng sẽ có ngày đơm hoa kết trái, những dự định sẽ dần thành hiện thực và những nỗi buồn sẽ sớm được thay bằng niềm vui. Chúc cô gái A2K40 một ngày 20/10 thật xinh và một tương lai thật rực rỡ nhé! ✨"
+    wish: "Chúc Ngọc Ánh ngày 20/10 luôn giữ được nét đáng yêu và nguồn năng lượng tích cực của mình nhé! 💕 Mong cậu sẽ có một tuổi học trò thật rực rỡ, đầy ắp tiếng cười và những kỷ niệm khó quên cùng A2K40. Chúc cậu học hành ngày càng tiến bộ, thi cử thuận lợi và sớm đạt được những điều mà mình luôn mong ước! ✨"
   },
   {
     name: "Thanh Chúc",
     code: "0512",
-    wish: "Thanh Chúc ơi, tên cậu đã có chữ Chúc rồi nên hôm nay nhất định phải nhận thêm thật nhiều lời chúc nữa! Chúc cậu luôn vui vẻ, bình an, học tốt và gặp toàn những chuyện khiến mình phải bật cười. Mong cuộc sống sẽ dành cho cậu thật nhiều bất ngờ dễ thương, những người bạn chân thành và những cơ hội tuyệt vời để cậu thực hiện ước mơ. Happy 20/10 nha! 🌷"
+    wish: "20/10 chúc Thanh Chúc lúc nào cũng gặp chuyện vui, làm gì cũng thuận lợi và luôn có những người tuyệt vời đồng hành bên cạnh! 🌻 Mong cậu sẽ có đủ tự tin để theo đuổi đam mê, đủ kiên trì để vượt qua thử thách và đủ may mắn để biến những dự định thành hiện thực. Chúc những năm tháng thanh xuân của cậu tại A2K40 sẽ trở thành khoảng thời gian thật đẹp để sau này nhớ lại vẫn mỉm cười! 💌💖"
   },
   {
     name: "Huyền Diệu",
     code: "2603",
-    wish: "Chúc Huyền Diệu có một ngày 20/10 thật nhiệm màu, mọi điều nhỏ bé cũng đủ làm cậu vui và mọi ước mơ đều có cơ hội thành hiện thực. Mong cậu luôn giữ được sự tự tin, nét đáng yêu và tinh thần lạc quan dù đôi khi việc học có hơi áp lực. Chúc cậu luôn được yêu thương, được là chính mình và có một thanh xuân A2K40 thật đáng nhớ! 💗"
+    wish: "Chúc lop trương có một ngày 20/10 ngập tràn niềm vui và những điều ngọt ngào nhé! 🩷 Mong cậu luôn giữ trong mình sự dịu dàng, một trái tim ấm áp và tinh thần lạc quan dù cuộc sống đôi khi có chút khó khăn. Chúc cậu học tập thật tốt, ngày càng trưởng thành, tự tin bước về phía trước và luôn gặp được những điều xứng đáng với sự cố gắng của mình. Hãy biến thanh xuân A2K40 thành một câu chuyện thật đẹp của riêng cậu nha! 🌷✨"
   },
   {
     name: "Kdungg",
@@ -402,107 +441,107 @@ const RECIPIENTS = [
   {
     name: "Ngọc Hà",
     code: "2011",
-    wish: "Chúc Ngọc Hà luôn dịu dàng với mọi người nhưng cũng đừng quên dành sự dịu dàng ấy cho chính mình. Mong cậu có sức khỏe, tinh thần thật tốt, học tập tiến bộ và luôn gặp những người biết lắng nghe, trân trọng cậu. Chúc 20/10 của cậu ngập tràn hoa và quà; còn những ngày bình thường cũng có thật nhiều điều giản dị khiến trái tim cậu vui vẻ. 🌹"
+    wish: "Chúc Ngọc Hà có một ngày 20/10 thật hạnh phúc, luôn được yêu thương và chiều chuộng, đặc biệt là từ anh người yêu Quốc Linh nhé! 🥰💐 Mong hai cậu sẽ luôn thấu hiểu, tin tưởng và đồng hành cùng nhau qua thật nhiều chặng đường. Chúc Quốc Linh lúc nào cũng biết cách khiến Ngọc Hà mỉm cười, còn Ngọc Hà thì luôn được yêu thương bằng những điều chân thành nhất. Hy vọng tình yêu của hai cậu sẽ ngày càng bền chặt, cùng nhau viết nên thật nhiều kỷ niệm đẹp và có một cái kết thật viên mãn nha! 💑🌷❤️"
   },
   {
     name: "Thanh Hải",
     code: "1011",
-    wish: "Thanh Hải ơi, chúc cậu luôn mạnh mẽ, bản lĩnh và tự tin bước đi trên con đường mình lựa chọn. Mong cậu dù gặp thử thách vẫn giữ được tinh thần lạc quan, biết nghỉ ngơi khi mệt và tự hào về những gì mình đã cố gắng. Chúc cô gái A2K40 có một ngày 20/10 thật rực rỡ, nhiều tiếng cười và một tương lai rộng mở với vô vàn điều tốt đẹp! 💐"
+    wish: "Chúc Thanh Hải ngày 20/10 có thật nhiều niềm vui và luôn gặp những điều bất ngờ thú vị nhé! 🌷 Mong cậu sẽ luôn vững vàng trước mọi thử thách, học hỏi được nhiều điều hay và ngày càng tiến gần hơn đến những mục tiêu của mình. Chúc cậu có một thanh xuân thật đáng giá, cùng A2K40 tạo nên những kỷ niệm mà sau này dù đi đâu cũng chẳng thể quên! 💐✨"
   },
   {
     name: "Ngọc Hân",
     code: "0506",
-    wish: "Ngọc Hân à, chúc cậu luôn hạnh phúc từ những điều nhỏ nhất: một lời hỏi thăm, một món ăn ngon, một điểm số đáng tự hào hay một buổi học đầy tiếng cười. Mong cậu luôn được sống đúng với tính cách của mình, được yêu quý vì con người thật của mình và có đủ can đảm để theo đuổi những điều mình mong muốn. 20/10 vui vẻ, cô gái đáng yêu của A2K40 nhé! 🌷"
+    wish: "20/10 chúc Ngọc Hân luôn là phiên bản tuyệt vời nhất của chính mình nhé! 💖 Mong cậu có thật nhiều cơ hội để khám phá những điều mới mẻ, làm những việc mình yêu thích và gặp được những người khiến cuộc sống trở nên ý nghĩa hơn. Chúc mọi bài kiểm tra đều suôn sẻ, mọi dự định đều tiến triển tốt đẹp và mỗi ngày đến trường đều có thêm một chuyện vui để kể! 📚🌻"
   },
   {
     name: "Vũ Hoa",
     code: "3001",
-    wish: "Gửi Vũ Hoa một bó hoa bằng lời chúc và thật nhiều tình cảm từ A2K40! Mong cậu luôn tươi tắn, khỏe mạnh, gặp nhiều may mắn và có những ngày tháng thật đáng sống. Chúc cậu học tốt mà vẫn có thời gian vui chơi, theo đuổi sở thích và tạo nên những kỷ niệm riêng của tuổi trẻ. Hãy cứ nở rộ theo cách của mình, vì mỗi người đều có mùa hoa đẹp nhất của riêng mình nha! 🌹"
+    wish: "Chúc Vũ Hoa ngày 20/10 nhận được thật nhiều yêu thương và có một ngày vui vẻ hơn cả mong đợi! 🌺 Mong cuộc sống sẽ luôn dành cho cậu những điều dịu dàng, những người bạn tốt và những cơ hội để cậu tự do theo đuổi ước mơ. Hãy cứ sống hết mình với tuổi trẻ, đừng ngại thử sức với những điều mới mẻ và nhớ rằng những nỗ lực nhỏ hôm nay sẽ tạo nên thành công lớn ngày mai. Chúc cậu và A2K40 có một mùa 20/10 thật đáng nhớ nhé! 💌✨"
   },
   {
     name: "Ánh Hồng",
     code: "0508",
-    wish: "Ánh Hồng ơi, chúc cậu luôn mang trong mình một ánh sáng ấm áp, đi đến đâu cũng gặp những điều tử tế và những người đáng quý. Mong cậu luôn tự tin vào bản thân, không vì một ngày chưa tốt mà nghi ngờ cả chặng đường mình đã cố gắng. Chúc ngày 20/10 của cậu thật ngọt ngào, trái tim luôn vui vẻ và thanh xuân A2K40 luôn là một phần ký ức thật hồng trong lòng cậu. 💗"
+    wish: "Chúc Ánh Hồng ngày 20/10 luôn tràn đầy nhiệt huyết, làm gì cũng hết mình và gặp thật nhiều điều bất ngờ thú vị nhé! 🌟 Mong cậu sẽ luôn giữ được ngọn lửa đam mê trong lòng, không ngại thử thách bản thân và dũng cảm bước ra khỏi vùng an toàn để chạm đến những điều lớn lao hơn. Chúc cậu có thật nhiều thành công, nhiều niềm vui và một thanh xuân đáng nhớ cùng A2K40! 💐💗"
   },
   {
     name: "Khánh Huyền",
     code: "1606",
-    wish: "Khánh Huyền à, chúc cậu luôn gặp nhiều niềm vui, may mắn và những cơ hội giúp bản thân trưởng thành hơn mỗi ngày. Mong cậu có đủ tự tin để thử những điều mới, đủ kiên nhẫn để theo đuổi mục tiêu và đủ bình yên để tận hưởng những gì mình đang có. Chúc cậu 20/10 thật xinh đẹp, nhận được nhiều yêu thương và có thêm vô số kỷ niệm vui cùng A2K40 nhé! 🌺"
+    wish: "Nhân ngày 20/10, chúc Khánh Huyền luôn gặp được những điều tuyệt vời nhất trong cuộc sống! 💐 Mong cậu sẽ có thật nhiều cơ hội để khám phá khả năng của bản thân, đạt được những thành tích đáng tự hào và biến những ước mơ thành hiện thực. Chúc cậu luôn giữ được sự tự tin, có những người bạn đồng hành tuyệt vời và sau này khi nhìn lại quãng thời gian A2K40, cậu sẽ mỉm cười vì đã có một thanh xuân thật đáng giá! 🎀✨"
   },
   {
     name: "Mai Hương",
     code: "1512",
-    wish: "Mai Hương ơi, mong cuộc sống của cậu luôn có hương thơm của những điều tốt đẹp: tình bạn chân thành, gia đình yêu thương và những ước mơ đáng để cố gắng. Chúc cậu luôn tươi tắn, học tập thuận lợi, gặp khó khăn vẫn vững vàng và mỗi ngày đều tìm thấy một lý do để mỉm cười. Ngày 20/10, chúc cậu được nâng niu như một bông hoa xinh đẹp nhé! 🌷"
+    wish: "Chúc Mai Hương ngày 20/10 thật nhiều niềm vui và có một tuổi trẻ rực rỡ theo cách riêng của mình! 🌼 Mong cậu sẽ có những ngày học tập đầy cảm hứng, những chuyến đi đáng nhớ, những tình bạn chân thành và thật nhiều câu chuyện vui để kể sau này. Chúc cậu luôn giữ vững tinh thần trước mọi thử thách, càng cố gắng càng gặt hái thành quả và sớm trở thành phiên bản mà chính cậu cũng phải tự hào. Thanh xuân A2K40 nhất định phải thật đáng nhớ nha! 💌🥰"
   },
   {
     name: "Kim Khánh",
     code: "0912",
-    wish: "Kim Khánh à, chúc cậu luôn quý giá như chính cái tên của mình, luôn biết mình xứng đáng với những điều tốt đẹp và không ngừng phát triển bản thân. Mong cậu gặp nhiều may mắn, học được những điều thú vị, có bạn bè chân thành và luôn tìm thấy niềm vui ngay cả trong những ngày bận rộn. Chúc 20/10 của cậu lấp lánh thật nhiều nụ cười và những món quà bất ngờ! ✨"
+    wish: "Chúc Kim Khánh ngày 20/10 thật nhiều niềm vui và có thêm thật nhiều điều đáng mong chờ trong cuộc sống nhé! 💗 Mong cậu luôn giữ được sự kiên định với những mục tiêu của mình, càng trưởng thành càng bản lĩnh và luôn tìm thấy động lực ngay cả khi mọi thứ không dễ dàng. Chúc cậu học tập tiến bộ, tương lai rộng mở và sắp tới đạt được thành tựu trong cuộc thi khát vọng lạc hồng nhé<3. Mong rằng thanh xuân A2K40 sẽ là một phần ký ức thật đẹp của cậu! ✨📚"
   },
   {
     name: "Khánh Linh",
     code: "0311",
-    wish: "Khánh Linh ơi, chúc cậu có một ngày 20/10 vừa vui vẻ vừa đáng nhớ, được ăn món ngon, nhận quà xinh và nghe những lời chúc thật lòng. Mong cậu luôn giữ được sự hồn nhiên của tuổi học trò, tự tin trước mọi thử thách và không ngừng tiến gần đến ước mơ của mình. Sau này khi nhìn lại ảnh lớp A2K40, hy vọng cậu sẽ thấy mình đã có một quãng thời gian thật tuyệt vời! 💕"
+    wish: "Chúc Khánh Linh ngày 20/10 nhận được thật nhiều niềm vui và những điều bất ngờ dễ thương nhé! 🎀 Mong cậu luôn giữ được sự nhiệt huyết của tuổi trẻ, dám nghĩ, dám làm và không ngừng khám phá những khả năng của bản thân. Chúc cậu có những năm tháng học trò đầy ắp tiếng cười, những tình bạn chân thành và những kỷ niệm đẹp cùng A2K40. Hy vọng sau này, dù mỗi người đi một con đường riêng, chúng ta vẫn sẽ nhớ về nhau bằng những nụ cười thật tươi! 💐✨"
   },
   {
     name: "Phương Linh",
     code: "2803",
-    wish: "Phương Linh à, chúc cậu luôn có một tâm hồn nhẹ nhàng, một tinh thần mạnh mẽ và thật nhiều niềm tin vào tương lai. Mong cậu không phải chịu quá nhiều áp lực, luôn có người sẵn sàng lắng nghe và có những khoảnh khắc vui vẻ để nạp lại năng lượng. Chúc cô gái A2K40 ngày càng trưởng thành, xinh đẹp và hạnh phúc với những lựa chọn của chính mình. 💕"
+    wish: "Chúc Phương Linh có một ngày 20/10 thật ngọt ngào, đặc biệt là luôn được anh người yêu Công Hoan yêu thương và quan tâm nhé! 🥰🌷 Mong hai cậu sẽ luôn dành cho nhau sự chân thành, biết lắng nghe, thấu hiểu và cùng nhau trưởng thành qua từng ngày. Chúc Công Hoan luôn là người mang đến nụ cười cho Phương Linh, còn Phương Linh sẽ mãi là cô gái đặc biệt trong lòng Hoan. Mong tình yêu của hai cậu ngày càng bền chặt, cùng nhau tạo nên thật nhiều kỷ niệm đẹp và viết tiếp một câu chuyện tình yêu thật đáng yêu nhé! 💑💕💐"
   },
   {
     name: "Thùy Linh",
     code: "2708",
-    wish: "Thùy Linh ơi, 20/10 này chúc cậu xinh hơn hôm qua, vui hơn hôm qua và gặp nhiều may mắn hơn hôm qua nhé! Mong cậu luôn học tốt, làm điều mình thích và không ngại thể hiện cá tính riêng. Chúc những ngày đến lớp có thật nhiều tiếng cười, những lần chụp ảnh đều thật xinh và tình bạn A2K40 sẽ trở thành một trong những điều đáng nhớ nhất của tuổi trẻ. 📸"
+    wish: "Nhân ngày 20/10, chúc Thùy Linh luôn có đủ tự do để sống theo cách mình muốn và đủ hạnh phúc để trân trọng những gì đang có! 💝 Mong cậu sẽ gặp được nhiều người tốt, trải nghiệm những điều mới mẻ và có thật nhiều cơ hội để khám phá những khả năng của chính mình. Chúc những ngày tháng phía trước luôn có điều thú vị chờ đón, những khó khăn rồi sẽ trở thành bài học quý giá và mỗi năm trôi qua, cậu lại có thêm nhiều lý do để tự hào về bản thân. A2K40 chúc cậu một mùa 20/10 thật đáng nhớ nhé! 🌻✨"
   },
   {
     name: "Hoàng Linh",
     code: "1501",
-    wish: "Hoàng Linh à, chúc cậu luôn rạng rỡ, tự tin và có đủ dũng khí để biến những dự định thành hiện thực. Mong mọi cố gắng của cậu đều được nhìn nhận, những ngày khó khăn sẽ qua nhanh và những ngày vui sẽ kéo dài thật lâu. Chúc cậu có một ngày 20/10 tràn đầy yêu thương, một tuổi trẻ nhiều trải nghiệm đẹp và một tương lai khiến bản thân tự hào. 🌸"
+    wish: "Chúc Hoàng Linh ngày 20/10 có một ngày thật vui và đầy ắp những điều bất ngờ nhé! 🌷 Mong cậu luôn có đủ nhiệt huyết để theo đuổi những điều mình yêu thích, đủ kiên trì để vượt qua những lúc khó khăn và đủ tự tin để tỏa sáng theo cách riêng. Chúc cậu có thật nhiều kỷ niệm đẹp bên A2K40, bởi những năm tháng học trò này sẽ là món quà vô giá mà sau này chúng ta luôn muốn quay về! 💌✨"
   },
   {
     name: "Thảo My",
     code: "2101",
-    wish: "Thảo My ơi, chúc cậu luôn đáng yêu, vui vẻ và giữ được những nét riêng khiến mọi người nhớ đến mình. Mong cậu có thật nhiều trải nghiệm mới, những chuyến đi vui, những bức ảnh đẹp và những câu chuyện để kể mãi không chán. Chúc cậu học hành thuận lợi, ước mơ luôn được tiếp sức và mỗi ngày bên A2K40 đều góp thêm một mảnh ghép đẹp vào thanh xuân của cậu! 🎀"
+    wish: "20/10 chúc Thảo My có thật nhiều niềm vui, quà xinh và những khoảnh khắc khiến cậu cười mãi không thôi! 🎁💐 Mong cậu luôn giữ được sự hồn nhiên của tuổi trẻ, làm những điều mình thích và không phải buồn lòng vì những chuyện nhỏ nhặt. Chúc mọi kế hoạch của cậu đều diễn ra suôn sẻ, những ngày đến trường luôn có chuyện vui và thanh xuân của cậu sẽ đầy ắp những câu chuyện đáng nhớ! 🌈💖"
   },
   {
     name: "Thúy Ngân",
     code: "1310",
-    wish: "Thúy Ngân à, chúc cậu luôn tỏa sáng bằng sự tự tin và nét duyên dáng của riêng mình. Mong cậu gặp nhiều điều may, có thật nhiều người yêu thương, luôn khỏe mạnh và không bao giờ thiếu động lực để theo đuổi những mục tiêu lớn. Ngày 20/10 chúc cậu cười thật nhiều, nhận được những điều mình thích và luôn cảm thấy vui vì là một phần của A2K40 nhé! 💐"
+    wish: "Chúc Thúy Ngân ngày 20/10 luôn gặp được những cơ hội tốt và có đủ bản lĩnh để biến chúng thành thành công của riêng mình! 🌟 Mong cậu không ngừng khám phá khả năng của bản thân, luôn tiến bộ qua từng ngày và đạt được những mục tiêu mà cậu đã đặt ra. Chúc cậu có một tương lai rộng mở, những người bạn chân thành bên cạnh và thật nhiều khoảnh khắc tự hào khi nhìn lại hành trình mình đã đi qua! 🎓💗"
   },
   {
     name: "Hà Ngân",
     code: "2308",
-    wish: "Hà Ngân ơi, chúc cậu có một ngày 20/10 ngập tràn niềm vui và những bất ngờ nho nhỏ. Mong cậu luôn bình an trong lòng, thuận lợi trong học tập và có đủ thời gian cho những điều khiến mình hạnh phúc. Dù đôi khi cuộc sống không như mong muốn, hãy nhớ rằng cậu vẫn đang trưởng thành từng ngày và luôn xứng đáng với những điều tốt đẹp. Chúc cậu một thanh xuân thật rực rỡ nha! 💗"
+    wish: "Chúc Hà Ngân ngày 20/10 gặp toàn chuyện vui, nhận toàn điều tốt và may mắn cứ tìm đến liên tục nhé! 🌷 Mong cậu sẽ luôn có những ngày bình yên, những buổi đi chơi thật vui cùng bạn bè và những trải nghiệm mới mẻ khiến tuổi trẻ thêm nhiều màu sắc. Chúc mọi điều cậu đang ấp ủ sẽ dần thành hiện thực, khó khăn nào cũng vượt qua được và mỗi ngày đều có ít nhất một lý do để mỉm cười! 💐✨ #khongduocbaolucnhe"
   },
   {
     name: "Thanh Ngân",
     code: "1108",
-    wish: "Thanh Ngân à, chúc cậu luôn giữ được nguồn năng lượng tích cực và nụ cười khiến những ngày bình thường cũng trở nên vui hơn. Mong cậu làm bài thật tốt, gặp nhiều may mắn, có thêm những người bạn tuyệt vời và luôn tự tin vào khả năng của mình. Chúc cậu không chỉ hạnh phúc trong ngày 20/10 mà còn có thật nhiều ngày đáng nhớ trên hành trình trưởng thành cùng A2K40. 🌷"
+    wish: "Nhân ngày 20/10, chúc Thanh Ngân luôn tự tin với lựa chọn của mình và không bao giờ ngại theo đuổi những điều khiến trái tim cậu rung động! 🌸 Mong cậu sẽ có thật nhiều trải nghiệm đáng giá, gặp được những người truyền cảm hứng và luôn giữ được niềm tin vào bản thân. Chúc những nỗ lực hôm nay sẽ mang lại thành quả xứng đáng, tương lai có nhiều cánh cửa rộng mở và quãng đời học sinh cùng A2K40 trở thành ký ức thật khó quên! 💌🌟"
   },
   {
     name: "Lê Phương",
     code: "2512",
-    wish: "Lê Phương ơi, chúc cậu luôn dịu dàng nhưng không yếu đuối, luôn biết yêu thương mọi người mà vẫn đặt niềm vui của bản thân ở vị trí xứng đáng. Mong mọi dự định của cậu đều thuận lợi, mỗi thử thách đều giúp cậu mạnh mẽ hơn và những ước mơ luôn có cơ hội thành hình. Chúc cô gái A2K40 một ngày 20/10 thật nhiều hoa, quà và những lời yêu thương chân thành! 🌹"
+    wish: "20/10 chúc Lê Phương có một ngày ngập tràn yêu thương và thật nhiều điều khiến cậu bất ngờ nhé! 💐 Mong cậu luôn đủ bình tĩnh trước những thử thách, đủ quyết tâm để hoàn thành mục tiêu và đủ lạc quan để nhìn thấy cơ hội trong những điều tưởng chừng khó khăn. Chúc cậu học tập ngày càng tiến bộ, làm được nhiều điều mình tự hào và sau này có thể mỉm cười nói rằng những năm tháng tuổi trẻ của mình đã trôi qua thật xứng đáng! 📚✨"
   },
   {
     name: "Minh Phượng",
     code: "0307",
-    wish: "Minh Phượng à, chúc cậu luôn rạng rỡ, vui vẻ và có một trái tim đủ ấm áp để trao đi yêu thương, đủ mạnh mẽ để vượt qua những ngày không dễ dàng. Mong cậu học tập tiến bộ, gặp đúng cơ hội và luôn có người đồng hành khi cần. Chúc cậu 20/10 thật đáng nhớ, tương lai thật rộng mở và sau này nhìn lại thanh xuân A2K40 vẫn thấy lòng mình ấm áp. 💕"
+    wish: "Chúc Minh Phượng ngày 20/10 thật rực rỡ, không chỉ bởi những lời chúc hôm nay mà còn bởi tất cả những điều tốt đẹp đang chờ cậu phía trước! 🌺 Mong cậu luôn có tinh thần khám phá, dám thử sức với những cơ hội mới và không sợ thất bại khi theo đuổi ước mơ. Chúc cậu tích lũy được thật nhiều kiến thức, trải nghiệm được thật nhiều điều thú vị và có một thanh xuân đáng nhớ bên những người bạn A2K40. Cứ mạnh dạn tiến về phía trước nhé, vì những điều tuyệt vời vẫn đang đợi cậu! 💗🎓"
   },
   {
     name: "Hải Phượng",
     code: "0903",
-    wish: "Hải Phượng ơi, chúc cậu luôn tự tin như ánh nắng, kiên trì với những điều mình tin tưởng và vui vẻ với hành trình của riêng mình. Mong những ngày sắp tới đem đến nhiều tin vui, những thành tích đáng tự hào và những người bạn thật lòng. Ngày 20/10 chúc cậu xinh đẹp, hạnh phúc và có thật nhiều khoảnh khắc khiến cậu muốn lưu giữ mãi mãi! 🌸"
+    wish: "Chúc Hải Phượng ngày 20/10 có thật nhiều niềm vui và luôn gặp được những cơ hội tuyệt vời trong cuộc sống nhé! 🌟 Mong cậu sẽ luôn can đảm thử sức với những điều mới mẻ, không ngừng hoàn thiện bản thân và từng bước chạm đến những ước mơ của mình. Chúc cậu có những năm tháng học trò thật đáng nhớ, những tình bạn thật chân thành và một tương lai đủ rực rỡ để nhìn lại hôm nay, cậu sẽ thấy mọi cố gắng đều xứng đáng! 💐✨"
   },
   {
     name: "Thanh Thảo",
     code: "2509",
-    wish: "Thanh Thảo à, chúc cậu luôn có những ngày thật xanh, tâm trạng thật nhẹ và thật nhiều điều đáng mong đợi. Mong cậu không ngừng khám phá khả năng của bản thân, tự hào về từng bước tiến nhỏ và luôn nhớ rằng chẳng cần hoàn hảo mới xứng đáng được yêu thương. Chúc cậu 20/10 thật ngọt ngào, học tập suôn sẻ và có một thanh xuân A2K40 đầy tiếng cười! 💐"
+    wish: "20/10 chúc Thanh Thảo luôn giữ được tinh thần lạc quan, dù gặp chuyện gì cũng có thể tìm thấy một lý do để mỉm cười nhé! 🌻 Mong cậu sẽ có thật nhiều trải nghiệm thú vị, gặp được những người luôn ủng hộ mình và tận hưởng trọn vẹn những năm tháng tuổi trẻ. Chúc cậu học tập thuận lợi, những dự định sớm thành hiện thực và mỗi ngày trôi qua đều góp thêm một mảnh ghép đẹp vào thanh xuân A2K40! 💌💖"
   },
   {
     name: "Thu Thảo",
     code: "2306",
-    wish: "Thu Thảo ơi, mong những điều tốt đẹp sẽ đến với cậu một cách nhẹ nhàng như cơn gió thu và ở lại thật lâu như những kỷ niệm đẹp. Chúc cậu luôn khỏe mạnh, vui vẻ, học tập thuận lợi và có những người bạn khiến mỗi ngày đến lớp đều đáng mong chờ. Ngày 20/10, hy vọng cậu nhận được thật nhiều tình cảm chân thành và luôn biết mình là một phần đáng quý của A2K40. 🌷"
+    wish: "Chúc Thu Thảo ngày 20/10 nhận được thật nhiều yêu thương và có một ngày vui hơn cả mong đợi! 💝 Mong cậu luôn có đủ tự tin để thể hiện bản thân, đủ kiên nhẫn để theo đuổi mục tiêu và đủ bình yên để tận hưởng những điều giản dị xung quanh. Chúc những bài kiểm tra sắp tới đều đạt kết quả tốt, những kế hoạch đều tiến triển như ý và tuổi học trò của cậu sẽ có thật nhiều câu chuyện vui để kể lại sau này! 📚🌷"
   },
   {
     name: "Thanh Thủy",
@@ -512,7 +551,7 @@ const RECIPIENTS = [
   {
     name: "Hà Trang",
     code: "2604",
-    wish: "💗 Chúc Hà Trang 20/10 luôn xinh đẹp, vui vẻ, học giỏi và gặp thật nhiều may mắn. Mong cậu lúc nào cũng rạng rỡ, hạnh phúc và được yêu thương thật nhiều nhé! 🌷💕"
+    wish: "Chúc Hà Trang ngày 20/10 thật rực rỡ, luôn gặp được những điều bất ngờ và có thật nhiều khoảnh khắc đáng nhớ nhé! 💐 Mong cậu sẽ luôn giữ vững niềm tin vào bản thân, dũng cảm theo đuổi những ước mơ và không ngừng tiến về phía trước. Chúc cậu học tập ngày càng tốt, thi cử thuận lợi, tương lai rộng mở và sớm đạt được những điều mà mình hằng mong muốn. Hy vọng thanh xuân A2K40 sẽ trở thành một phần ký ức thật đẹp, để nhiều năm sau nhìn lại, cậu vẫn thấy vui vì đã có những tháng ngày tuyệt vời bên mọi người! 🎀✨💖"
   }
 ];
 
@@ -588,7 +627,18 @@ function openCard(person) {
 
   // Điền lời chúc trước khi hiện thiệp
   recipientName.textContent = person.name;
-  wishText.textContent = person.wish;
+ // Tách lời chúc thành từng dòng và cho hiện lần lượt
+wishText.replaceChildren();
+
+const lines = person.wish.split(/\n/).filter(line => line.trim() !== "");
+
+lines.forEach((line, index) => {
+  const span = document.createElement("span");
+  span.className = "wish-line";
+  span.textContent = line;
+  span.style.setProperty("--delay", `${index * 0.35}s`);
+  wishText.appendChild(span);
+});
   errorMessage.textContent = "";
 
   const overlay = document.getElementById("transitionOverlay");
