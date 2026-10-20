@@ -141,6 +141,48 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
   will-change: opacity, transform;
 }
 
+/* ===== MÀN HÌNH CHỌN NGƯỜI KHI TRÙNG NGÀY SINH ===== */
+#chooseScreen .panel {
+  animation: choicePanelIn .45s ease both;
+}
+#chooseScreen h2 {
+  color: #d94c87;
+  font-size: clamp(1.7rem, 6vw, 2.35rem);
+  margin: 12px 0;
+}
+#chooseScreen .choice-description {
+  color: #8d5b73;
+  line-height: 1.7;
+}
+.recipient-choices {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 18px;
+}
+.recipient-choice {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1px solid #ffc2d9;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #fff0f6, #fff);
+  color: #c74680;
+  font-weight: 800;
+  box-shadow: 0 6px 18px #d85c8b12;
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+}
+.recipient-choice:hover,
+.recipient-choice:focus-visible {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #ffe0ed, #f7eaff);
+  box-shadow: 0 10px 24px #d85c8b24;
+  outline: 2px solid #ff9fc5;
+  outline-offset: 2px;
+}
+@keyframes choicePanelIn {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 @media(max-width:520px){.screen{padding:16px}.panel{border-radius:24px}.topbar{align-items:flex-start}.topbar .btn{padding:10px 14px}.card{border-radius:24px}.wish-box{padding:18px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
 
@@ -328,6 +370,24 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
   </div>
 </main>
 
+<!-- MÀN HÌNH CHỌN TÊN KHI CÓ NHIỀU BẠN DÙNG CHUNG NGÀY SINH -->
+<main id="chooseScreen" class="screen hidden">
+  <div class="panel">
+    <div class="heart-logo" aria-hidden="true">💗</div>
+    <div class="eyebrow">A2K40 • 20 tháng 10</div>
+    <h2>Cậu là ai nhỉ?</h2>
+    <p class="choice-description">
+      Có vài cô gái cùng ngày sinh đó! 🌸<br>
+      Chọn tên của cậu để mở đúng lời chúc riêng nhé.
+    </p>
+    <div id="recipientChoices" class="recipient-choices"
+         role="group" aria-label="Chọn người nhận lời chúc"></div>
+    <button type="button" class="btn btn-soft" id="chooseBackBtn">
+      ← Quay lại nhập passcode
+    </button>
+  </div>
+</main>
+
 <!-- THIỆP RIÊNG CHỈ HIỆN SAU KHI NHẬP MẬT MÃ -->
 <main id="cardScreen" class="screen hidden">
   <div class="page-wrap">
@@ -384,9 +444,9 @@ const trackingDB = firebase.firestore();
 
 const RECIPIENTS = [
   {
-    name: "Kiều An & Hoàng Linh",
+    name: "Kiều An",
     code: "1501",
-    wish: "💗 Chúc Kiều An và Hoàng Linh một ngày 20/10 thật hạnh phúc và ngập tràn yêu thương! 🌷 Chúc hai cậu luôn xinh đẹp, tự tin, rạng rỡ và giữ mãi nụ cười tươi trên môi. Mong rằng mỗi ngày trôi qua đều mang đến thật nhiều niềm vui, những điều bất ngờ đáng yêu và những khoảnh khắc đáng nhớ. Chúc hai cậu học tập thật tốt, luôn gặp may mắn, sớm đạt được những ước mơ của mình và có một thanh xuân thật rực rỡ bên A2K40. Hy vọng rằng không chỉ riêng ngày 20/10 mà tất cả những ngày sau này, hai cậu đều được yêu thương, trân trọng và hạnh phúc theo cách tuyệt vời nhất nhé! 💕🌸 💐"
+    wish: "Kiều An ơi, chúc cậu có một ngày 20/10 thật dịu dàng và đáng nhớ nhé! 🌷 Mong cậu luôn giữ được sự ấm áp, nụ cười trong trẻo và lòng can đảm để theo đuổi những điều mình yêu thích. Chúc những cố gắng của cậu đều được đền đáp, mỗi ngày đến lớp đều có chuyện vui và thanh xuân A2K40 của cậu sẽ đầy ắp những kỷ niệm khiến cậu mỉm cười khi nhớ lại. Luôn tự tin và tỏa sáng theo cách rất riêng của mình nha! 💗✨"
   },
   {
     name: "Ngọc Anh",
@@ -394,9 +454,9 @@ const RECIPIENTS = [
     wish: "Chúc Ngọc Anh ngày 20/10 luôn xinh xắn, vui vẻ và rạng rỡ như những bông hoa nhé! 🌷💗 Mong cậu luôn gặp nhiều may mắn, học tập thật tốt và có thật nhiều niềm vui trong cuộc sống. Chúc cậu mãi tự tin, hạnh phúc và luôn được yêu thương! 💐💕"
   },
   {
-    name: "Quỳnh Anh & Thanh Thủy",
+    name: "Quỳnh Anh",
     code: "0101",
-    wish: "(hì do trùng ngày sinh nên chúc chung 2 cậu nhé😓)Chúc Quỳnh Anh và Thanh Thủy có một ngày 20/10 thật vui vẻ, ngập tràn tiếng cười và nhận được thật nhiều yêu thương nhé! 💐 Mong hai cậu luôn tự tin, học tập thật tốt, thi cử gặp may mắn và sớm chinh phục được những mục tiêu mà mình đặt ra. Chúc hai cậu cùng những kỷ niệm với A2K40 sẽ luôn là một phần thanh xuân đáng nhớ. Hy vọng sau này, khi nhìn lại những năm tháng học trò, hai cậu sẽ luôn mỉm cười vì đã có một tuổi trẻ thật rực rỡ! 🎀✨💕 "
+    wish: "Quỳnh Anh ơi, chúc cậu có một ngày 20/10 thật nhiều tiếng cười và những điều bất ngờ dễ thương! 💐 Mong cậu luôn giữ được sự tự tin, gặp được những người khiến cậu thấy thoải mái khi là chính mình và có đủ kiên trì để chạm tới những mục tiêu đã đặt ra. Chúc những ngày tháng cùng A2K40 sẽ mang đến cho cậu thật nhiều câu chuyện đẹp, để sau này nhớ lại vẫn thấy tuổi học trò thật đáng quý. Hôm nay hãy nhận thật nhiều yêu thương nhé! 💗🎀"
   },
   {
     name: "Điệp Anh",
@@ -495,7 +555,7 @@ const RECIPIENTS = [
   },
   {
     name: "Hoàng Linh",
-    code: "1551",
+    code: "1501",
     wish: "Chúc Hoàng Linh ngày 20/10 có một ngày thật vui và đầy ắp những điều bất ngờ nhé! 🌷 Mong cậu luôn có đủ nhiệt huyết để theo đuổi những điều mình yêu thích, đủ kiên trì để vượt qua những lúc khó khăn và đủ tự tin để tỏa sáng theo cách riêng. Chúc cậu có thật nhiều kỷ niệm đẹp bên A2K40, bởi những năm tháng học trò này sẽ là món quà vô giá mà sau này chúng ta luôn muốn quay về! 💌✨"
   },
   {
@@ -545,7 +605,7 @@ const RECIPIENTS = [
   },
   {
     name: "Thanh Thủy",
-    code: "0123",
+    code: "0101",
     wish: "Thanh Thủy à, chúc cậu luôn bình yên như mặt nước trong, nhưng cũng mạnh mẽ để vượt qua mọi sóng gió. Mong cậu có đủ niềm vui để mỉm cười, đủ bản lĩnh để theo đuổi ước mơ và đủ yêu thương để luôn cảm thấy cuộc sống thật đáng quý. Chúc cô gái A2K40 một ngày 20/10 thật xinh đẹp, nhận nhiều quà và có một tương lai ngập tràn điều tốt lành! 💐"
   },
   {
@@ -557,6 +617,8 @@ const RECIPIENTS = [
 
 
 const lockScreen = document.getElementById("lockScreen");
+const chooseScreen = document.getElementById("chooseScreen");
+const recipientChoices = document.getElementById("recipientChoices");
 const cardScreen = document.getElementById("cardScreen");
 const passcodeInput = document.getElementById("passcode");
 const errorMessage = document.getElementById("errorMessage");
@@ -686,6 +748,7 @@ lines.forEach((line, index) => {
 function goBack() {
   isTransitioning = false;
 
+  chooseScreen.classList.add("hidden");
   const overlay = document.getElementById("transitionOverlay");
   overlay.classList.remove("active");
 
@@ -702,15 +765,48 @@ function goBack() {
   passcodeInput.focus();
 }
 
+function showRecipientChoices(matches) {
+  // Hiện màn hình chọn tên nếu có nhiều người cùng passcode
+  lockScreen.classList.add("hidden");
+  cardScreen.classList.add("hidden");
+  chooseScreen.classList.remove("hidden");
+  recipientChoices.replaceChildren();
+
+  matches.forEach((person) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "recipient-choice";
+    button.textContent = "🌸 " + person.name;
+    button.addEventListener("click", () => {
+      chooseScreen.classList.add("hidden");
+      // Mở thiệp riêng của người được chọn
+      openCard(person);
+      recordLetterOpen(person);
+    });
+    recipientChoices.appendChild(button);
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.getElementById("chooseBackBtn").addEventListener("click", () => {
+  chooseScreen.classList.add("hidden");
+  lockScreen.classList.remove("hidden");
+  passcodeInput.value = "";
+  errorMessage.textContent = "";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 document.getElementById("unlockForm").addEventListener("submit", function(event) {
   event.preventDefault();
-  const code = passcodeInput.value.replace(/\D/g, "").trim();
+  const code = passcodeInput.value.replace(/\\D/g, "").trim();
   const matches = RECIPIENTS.filter(person => person.code === code);
- if (matches.length === 1) {
+
+  if (matches.length === 1) {
     recordLetterOpen(matches[0]);
-openCard(matches[0]);
+    openCard(matches[0]);
   } else if (matches.length > 1) {
-    errorMessage.textContent = "Mật mã này đang bị trùng. Hãy sửa ngày sinh trong danh sách để mỗi bạn có một mã riêng nhé.";
+    showRecipientChoices(matches);
   } else {
     errorMessage.textContent = "Mật mã chưa đúng rồi, cậu thử kiểm tra lại DDMM nhé! 💗";
     passcodeInput.select();
