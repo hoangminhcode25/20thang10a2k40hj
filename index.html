@@ -112,7 +112,21 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
     transform: scale(3.5);
   }
 }
+<main id="chooseScreen" class="screen hidden">
+  <section class="panel">
+    <div class="heart-logo">💗</div>
+    <p class="eyebrow">A2K40 • 20 tháng 10</p>
+    <h2>Cậu là ai nhỉ?</h2>
+    <p>Ngày sinh này có nhiều người trùng nhau.
+      Hãy chọn đúng tên của cậu nhé!</p>
 
+    <div id="recipientChoices" class="recipient-choices"></div>
+
+    <button type="button" id="chooseBackBtn">
+      ← Quay lại nhập passcode
+    </button>
+  </section>
+</main>
 /* Thiệp hiện ra nhẹ nhàng */
 #cardScreen.card-enter .page-wrap {
   animation: cardReveal 0.9s cubic-bezier(.2,.8,.2,1) both;
@@ -253,7 +267,29 @@ h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.1;margin:12px 0;color:#d94c87}
     filter: none;
   }
 }
+.recipient-choices {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+}
 
+.recipient-choice {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ff9fc5;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fff0f6, #ffffff);
+  color: #df4d88;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.recipient-choice:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px #df4d8830;
+}
 </style>
 </head>
 <body>
@@ -564,7 +600,14 @@ const recipientName = document.getElementById("recipientName");
 const wishText = document.getElementById("wishText");
 const bgMusic = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
+const chooseScreen = document.getElementById("chooseScreen");
+const recipientChoices =
+  document.getElementById("recipientChoices");
 
+document.getElementById("chooseBackBtn").addEventListener("click", () => {
+  chooseScreen.classList.add("hidden");
+  lockScreen.classList.remove("hidden");
+});
 /* ===== CHỨC NĂNG BÀN PHÍM SỐ ẢO ===== */
 
 const virtualKeyboard = document.getElementById("virtualKeyboard");
@@ -706,16 +749,35 @@ document.getElementById("unlockForm").addEventListener("submit", function(event)
   event.preventDefault();
   const code = passcodeInput.value.replace(/\D/g, "").trim();
   const matches = RECIPIENTS.filter(person => person.code === code);
-  if (matches.length === 1) {
-    recordLetterOpen(matches[0]);
-openCard(matches[0]);
-  } else if (matches.length > 1) {
-    errorMessage.textContent = "Mật mã này đang bị trùng. Hãy sửa ngày sinh trong danh sách để mỗi bạn có một mã riêng nhé.";
-  } else {
-    errorMessage.textContent = "Mật mã chưa đúng rồi, cậu thử kiểm tra lại DDMM nhé! 💗";
-    passcodeInput.select();
-  }
-});
+  if (matches.length === 0) {
+  errorMessage.textContent =
+    "Passcode chưa đúng rồi, cậu thử lại nhé 💗";
+} else if (matches.length === 1) {
+  recordLetterOpen(matches[0]);
+  openCard(matches[0]);
+} else {
+  // Có nhiều người trùng passcode
+  lockScreen.classList.add("hidden");
+  cardScreen.classList.add("hidden");
+  chooseScreen.classList.remove("hidden");
+
+  recipientChoices.replaceChildren();
+
+  matches.forEach((person) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "recipient-choice";
+    button.textContent = "🌸 " + person.name;
+
+    button.addEventListener("click", () => {
+      chooseScreen.classList.add("hidden");
+      recordLetterOpen(person);
+      openCard(person);
+    });
+
+    recipientChoices.appendChild(button);
+  });
+}
 document.getElementById("backBtn").addEventListener("click", goBack);
 document.getElementById("returnBtn").addEventListener("click", goBack);
 musicBtn.addEventListener("click", function() {
